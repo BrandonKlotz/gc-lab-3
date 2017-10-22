@@ -1,25 +1,68 @@
-* {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css?family=Bungee');
 
+* {
+  font-family: 'Bungee',cursive;
+  text-align: center;
 }
+
 html {
   padding: 6em;
   display: flex;
-  background-color: blue;
+  background-color: #F0F3BD;
 }
 
 body {
   margin: 0 auto;
 }
 
-div {
+h1 {
+  margin-top: 0;
+}
+
+.start div {
+  margin-bottom: 2em;
+  height: 60px;
+}
+
+.start {
   margin: 0 auto;
+  padding: 2em;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  background-color: #DBDDAC;
+  border-radius: 10px;
+  height: 200px;
+}
+
+.status {
+  margin-top: 1em;
+  padding: 1.5em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #DBDDAC;
+  border-radius: 10px;
 }
 
 input {
-  width: 100%;
+  margin: 10px 1em 10px 1em;
   height: 60px;
+  width: 120px;
+  line-height: 50px;
+  color: #FFF;
+  font-size: 1.5em;
+  border: 1px solid #028090;
+  border-radius: 10px;
+  transition: all 0.2s ;
+  background-color: #028090;
+  box-shadow: 0px 10px 0px 0px #05668D;
+}
+
+input:hover {
+  margin-top: 15px;
+  margin-bottom: 5px;
+  box-shadow: 0px 0px 0px 0px #05668D;
 }

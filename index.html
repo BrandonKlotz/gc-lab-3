@@ -4,16 +4,30 @@
   <head>
     <title>Super Epic Battle Arena</title>
     <link href="css/style.css" type="text/css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet">
     <script src="script.js"></script>
   </head>
 
   <body>
 
-    <div>
-      <h1>Super Epic Battle Arena</h1>
-      <p>Face the Almighty Grant!</p>
-      <input type="button" value="Game Button" onclick="initGame();">
+    <div class="start">
+      <div>
+        <h1>Super Epic Battle Arena</h1>
+        <p>Face the Almighty Grant!</p>
+      </div>
+      <div>
+      <input type="button" value="Start" onclick="startGame();">
+      </div>
+    </div>
+
+    <div class="status">
+      <input type="button" value="Attack" onclick="">
+      <input type="button" value="Heal" onclick="">
+      <input type="button" value="Quit" onclick="">
+      <p id="user"></p><p id="grant"></p>
+      <table>
+
+      </table>
     </div>
 
   </body>
