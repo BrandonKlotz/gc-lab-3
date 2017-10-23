@@ -143,5 +143,6 @@ input:hover {
 }
 
 .quit:active {
+  border: 4px solid #442E8B;
   background-color: #5A469C;
 }
