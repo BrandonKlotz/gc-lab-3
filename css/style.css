@@ -17,6 +17,11 @@ body {
 
 h1 {
   margin-top: 0;
+  color: #161712;
+}
+
+p {
+  color: #161712;
 }
 
 .start div {
@@ -24,7 +29,7 @@ h1 {
   height: 60px;
 }
 
-.start {
+.header {
   margin: 0 auto;
   padding: 2em;
   display: flex;
@@ -52,13 +57,54 @@ input {
   height: 60px;
   width: 120px;
   line-height: 50px;
-  color: #FFF;
   font-size: 1.5em;
-  border: 1px solid #028090;
   border-radius: 10px;
   transition: all 0.2s ;
+  color: #02C39A;
+  text-shadow: 0px 0px 12px #00A896;
+  border: 1px solid #028090;
   background-color: #028090;
-  box-shadow: 0px 10px 0px 0px #05668D;
+  box-shadow: 0px 6px 0px 0px #05668D;
+}
+
+.attack {
+  color: #F7B974;
+  text-shadow: 0px 0px 12px #F79D65;
+  border: 4px solid #F4845F;
+  background-color: #F4845F;
+  box-shadow: 0px 6px 0px 0px #F27059;
+}
+
+.attack:hover {
+  box-shadow: 0px 0px 0px 0px #F27059;
+}
+
+.start {
+  color: #FF8E82;
+  text-shadow: 0px 0px 12px #F64B38;
+  border: 1px solid #F63925;
+  background-color: #F63925;
+  box-shadow: 0px 6px 0px 0px #E03422;
+}
+
+.start:hover {
+  box-shadow: 0px 0px 0px 0px #E03422;
+}
+
+.quit {
+  color: #AB97ED;
+  text-shadow: 0px 0px 12px #7E6CBA;
+  border: 1px solid #705CB2;
+  background-color: #705CB2;
+  box-shadow: 0px 6px 0px 0px #5A469C;
+}
+
+.quit:hover {
+  box-shadow: 0px 0px 0px 0px #5A469C;
+}
+
+.quit:active {
+  background-color: #5A469C;
 }
 
 input:hover {
