@@ -6,13 +6,22 @@
 }
 
 html {
-  padding: 6em;
+  padding: 4em;
   display: flex;
-  background-color: #F0F3BD;
+  background-color: #2F195F;
 }
 
 body {
   margin: 0 auto;
+}
+
+.wrapper {
+  background-color: #F0F3BD;
+  padding: 4em;
+  height: 100%;
+  width: 600px;
+  border-radius: 10px;
+  box-shadow: 0px 60px 0px 0px #C5C79B;
 }
 
 h1 {
@@ -38,7 +47,8 @@ p {
   align-items: center;
   background-color: #DBDDAC;
   border-radius: 10px;
-  height: 200px;
+  height: 150px;
+  box-shadow: 0px -4px 0px 0px #C5C79B;
 }
 
 .status {
@@ -47,9 +57,10 @@ p {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   background-color: #DBDDAC;
   border-radius: 10px;
+  box-shadow: 0px -4px 0px 0px #C5C79B;
 }
 
 input {
@@ -60,6 +71,34 @@ input {
   font-size: 1.5em;
   border-radius: 10px;
   transition: all 0.2s ;
+  border: 1px solid #fff;
+  background-color: #fff;
+  box-shadow: 0px 6px 0px 0px #fff;
+}
+
+input:hover {
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+.attack {
+  color: #F7B974;
+  text-shadow: 0px 0px 12px #F79D65;
+  border: 1px solid #F4845F;
+  background-color: #F4845F;
+  box-shadow: 0px 6px 0px 0px #F27059;
+}
+
+
+.attack:hover {
+  box-shadow: 0px 0px 0px 0px #F27059;
+}
+
+.attack:active {
+  background-color: #F27059;
+}
+
+.heal {
   color: #02C39A;
   text-shadow: 0px 0px 12px #00A896;
   border: 1px solid #028090;
@@ -67,16 +106,12 @@ input {
   box-shadow: 0px 6px 0px 0px #05668D;
 }
 
-.attack {
-  color: #F7B974;
-  text-shadow: 0px 0px 12px #F79D65;
-  border: 4px solid #F4845F;
-  background-color: #F4845F;
-  box-shadow: 0px 6px 0px 0px #F27059;
+.heal:hover {
+  box-shadow: 0px 0px 0px 0px #05668D;
 }
 
-.attack:hover {
-  box-shadow: 0px 0px 0px 0px #F27059;
+.heal:active {
+  background-color: #05668D;
 }
 
 .start {
@@ -89,6 +124,10 @@ input {
 
 .start:hover {
   box-shadow: 0px 0px 0px 0px #E03422;
+}
+
+.start:active {
+  background-color: #E03422;
 }
 
 .quit {
@@ -105,10 +144,4 @@ input {
 
 .quit:active {
   background-color: #5A469C;
-}
-
-input:hover {
-  margin-top: 15px;
-  margin-bottom: 5px;
-  box-shadow: 0px 0px 0px 0px #05668D;
 }
