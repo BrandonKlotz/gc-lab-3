@@ -1,64 +1,22 @@
-var grant = 'Grant Chirpus';
-var userWins = 0;
-var pointsNeededToWin = 3;
-
-var grantHealth = 10;
-var userHealth = 40;
-var healthDepleted = 0;
-
-function getDamage() {
-  var min = 0;
-  var max = 5
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+var user = {
+name: '',
+health: 40,
+wins: 0,
+attack: getDamage(),
 }
 
-function startCombat() {
-
-  while (userWins < pointsNeededToWin && userHealth > 0) {// Rounds needed to win
-
-    while (userHealth >= healthDepleted && grantHealth >= healthDepleted) {
-
-      if (window.confirm('Would you like to continue Attacking?')) {
-        console.log(userName + ' decides to attack.');
-      } else {
-        console.log(userName + ' has ended the game.')
-        return;
-      }
-
-      var grantAttack = getDamage();
-      var userAttack = getDamage();
-
-      grantHealth = grantHealth - userAttack;
-      userHealth = userHealth - grantAttack;
-
-      console.log(userName + ' has ' + userHealth + ' health..');
-      console.log(grant + ' has ' + grantHealth + ' health..');
-
-      }
-
-      console.log('round over')
-      userWins++;
-      grantHealth = 10;
-
-    }
-
-  if (userHealth < healthDepleted) {
-    console.log(userName + ' Lost');
-  } else {
-    console.log(grant + ' Lost');
-  }
-  console.log('game over');
-
-  grantHealth = 10;
-  userHealth = 40;
-  userWins = 0;
-
+var compPlayer = {
+name: 'Grant Chirpus',
+health:  10,
+wins: 0,
+attack: getDamage(),
 }
 
+let pointsNeededToWin = 3;
+let healthDepleted = 0;
 
-function startGame() {
+
+function startGame(playerOne, playerTwo) {
 
   var gameStartPrompt = prompt ('Do you dare enter the Dungeon?');
   var consent = 'yes';
@@ -70,11 +28,73 @@ function startGame() {
       console.log(playFalse);
 
     } else {
-      userName = prompt('Enter your wizarding name!');
+      playerOne.name = prompt('Enter your wizarding name!');
 
-      console.log(userName + ' enters the dungeon...');
+      if (playerOne.name !== null) {
 
-      startCombat();
+        console.log(playerOne.name + ' enters the dungeon...');
+
+        startCombat(playerOne, playerTwo);
+
+      } else {
+        playerOne.name = prompt('You did not enter a name.. Enter your wizarding name!');
+        return;
+      }
     }
+
+}
+
+function getDamage() {
+  var min = 0;
+  var max = 5
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+}
+
+function endGame(playerOne, playerTwo) {
+  if (playerOne.health < healthDepleted) {
+    console.log(playerOne.name + ' Lost');
+  } else {
+    console.log(playerTwo.name + ' Lost');
+  }
+  console.log('game over');
+
+  playerTwo.health = 10;
+  playerOne.health = 40;
+  playerOne.wins = 0;
+}
+
+function startCombat(playerOne, playerTwo) {
+
+  while (playerOne.wins < pointsNeededToWin && playerOne.health >=healthDepleted) {// Rounds needed to win
+
+    while (playerOne.health >= healthDepleted && playerTwo.health >= healthDepleted) {
+
+      if (window.confirm('Would you like to continue Attacking?')) {
+        console.log(playerOne.name + ' decides to attack.');
+      } else {
+        console.log(playerOne.name + ' has ended the game.')
+        return;
+      }
+
+      playerTwo.attack = getDamage();
+      playerOne.attack = getDamage();
+
+      playerTwo.health = playerTwo.health - playerOne.attack;
+      playerOne.health = playerOne.health - playerTwo.attack;
+
+      console.log(playerOne.name + ' has ' + playerOne.health + ' health..');
+      console.log(playerTwo.name + ' has ' + playerTwo.health + ' health..');
+
+      }
+
+      console.log('round over')
+      playerOne.wins++;
+      playerTwo.health = 10;
+
+    }
+
+    endGame(playerOne, playerTwo);
 
 }
