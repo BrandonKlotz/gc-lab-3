@@ -2,20 +2,29 @@ var user = {
 name: '',
 health: 40,
 wins: 0,
-attack: getNum(),
-heal: 0,
-healCount: ,
+attack: getNum(1,3),
+heal: healUser(),
+healCount: 2,
 }
 
 var compPlayer = {
 name: 'Grant Chirpus',
 health:  10,
 wins: 0,
-attack: getNum(),
+attack: getNum(1,5),
 }
 
 let pointsNeededToWin = 3;
 let healthDepleted = 0;
+
+function healUser(playerOne) {
+  if (playerOne.healCount = 0) {
+
+  } else {
+    getNum(1,10);
+      
+  }
+}
 
 function startGame(playerOne, playerTwo) {
 
@@ -46,11 +55,11 @@ function startGame(playerOne, playerTwo) {
 }
 
 function getNum(min, max) {
-  var min = 0;
-  var max = 5
+  var min;
+  var max;
   min = Math.ceil(min);
   max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+  return Math.floor(Math.random(min, max) * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
 }
 
 function endGame(playerOne, playerTwo) {
@@ -79,9 +88,6 @@ function startCombat(playerOne, playerTwo) {
         return;
       }
 
-      playerTwo.attack = getNum();
-      playerOne.attack = getNum();
-
       playerTwo.health = playerTwo.health - playerOne.attack;
       playerOne.health = playerOne.health - playerTwo.attack;
 
@@ -93,11 +99,8 @@ function startCombat(playerOne, playerTwo) {
       console.log('round over')
       playerOne.wins++;
       playerTwo.health = 10;
-
     }
-
     endGame(playerOne, playerTwo);
-
 }
 
 // Not using this code. We would use this if we used classes instead of Objects
