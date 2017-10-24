@@ -2,19 +2,21 @@ var user = {
 name: '',
 health: 40,
 wins: 0,
+attack: getDamage(),
 }
 
 var compPlayer = {
 name: 'Grant Chirpus',
 health:  10,
 wins: 0,
+attack: getDamage(),
 }
 
 let pointsNeededToWin = 3;
 let healthDepleted = 0;
 
 
-function startGame() {
+function startGame(playerOne, playerTwo) {
 
   var gameStartPrompt = prompt ('Do you dare enter the Dungeon?');
   var consent = 'yes';
@@ -26,19 +28,20 @@ function startGame() {
       console.log(playFalse);
 
     } else {
-      user.name = prompt('Enter your wizarding name!');
+      playerOne.name = prompt('Enter your wizarding name!');
 
-      if (user.name !== null) {
+      if (playerOne.name !== null) {
 
-        console.log(user.name + ' enters the dungeon...');
+        console.log(playerOne.name + ' enters the dungeon...');
 
-        startCombat();
+        startCombat(playerOne, playerTwo);
 
       } else {
-        user.name = prompt('Enter your wizarding name!');
+        playerOne.name = prompt('You did not enter a name.. Enter your wizarding name!');
         return;
       }
     }
+
 }
 
 function getDamage() {
@@ -49,44 +52,49 @@ function getDamage() {
   return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
 }
 
-function startCombat() {
+function endGame(playerOne, playerTwo) {
+  if (playerOne.health < healthDepleted) {
+    console.log(playerOne.name + ' Lost');
+  } else {
+    console.log(playerTwo.name + ' Lost');
+  }
+  console.log('game over');
 
-  while (user.wins < pointsNeededToWin && user.health >=healthDepleted) {// Rounds needed to win
+  playerTwo.health = 10;
+  playerOne.health = 40;
+  playerOne.wins = 0;
+}
 
-    while (user.health >= healthDepleted && compPlayer.health >= healthDepleted) {
+function startCombat(playerOne, playerTwo) {
+
+  while (playerOne.wins < pointsNeededToWin && playerOne.health >=healthDepleted) {// Rounds needed to win
+
+    while (playerOne.health >= healthDepleted && playerTwo.health >= healthDepleted) {
 
       if (window.confirm('Would you like to continue Attacking?')) {
-        console.log(user.name + ' decides to attack.');
+        console.log(playerOne.name + ' decides to attack.');
       } else {
-        console.log(user.name + ' has ended the game.')
+        console.log(playerOne.name + ' has ended the game.')
         return;
       }
 
-      var grantAttack = getDamage();
-      var userAttack = getDamage();
+      playerTwo.attack = getDamage();
+      playerOne.attack = getDamage();
 
-      compPlayer.health = compPlayer.health - userAttack;
-      user.health = user.health - grantAttack;
+      playerTwo.health = playerTwo.health - playerOne.attack;
+      playerOne.health = playerOne.health - playerTwo.attack;
 
-      console.log(user.name + ' has ' + user.health + ' health..');
-      console.log(compPlayer.name + ' has ' + compPlayer.health + ' health..');
+      console.log(playerOne.name + ' has ' + playerOne.health + ' health..');
+      console.log(playerTwo.name + ' has ' + playerTwo.health + ' health..');
 
       }
 
       console.log('round over')
-      user.wins++;
-      grant.health = 10;
+      playerOne.wins++;
+      playerTwo.health = 10;
 
     }
 
-  if (user.health < healthDepleted) {
-    console.log(user.name + ' Lost');
-  } else {
-    console.log(compPlayer.name + ' Lost');
-  }
-  console.log('game over');
+    endGame(playerOne, playerTwo);
 
-  compPlayer.health = 10;
-  user.health = 40;
-  user.wins = 0;
 }
