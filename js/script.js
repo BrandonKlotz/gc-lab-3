@@ -1,28 +1,31 @@
 var user = {
-name: '',
+name: null,
 health: 40,
 wins: 0,
 attack: getNum(1,3),
-heal: healUser(),
-healCount: 2,
+heal: 0,
+healCount: 0
 }
 
 var compPlayer = {
 name: 'Grant Chirpus',
 health:  10,
 wins: 0,
-attack: getNum(1,5),
+attack: getNum(1,5)
 }
 
 let pointsNeededToWin = 3;
 let healthDepleted = 0;
 
 function healUser(playerOne) {
-  if (playerOne.healCount = 0) {
-
+  if (playerOne.healCount = 2) {
+    console.log('get out.');
+    decidingPrompt();
   } else {
-    getNum(1,10);
-      
+    var addHealth = getNum(1,10);
+    playerOne.health = playerOne.health + addHealth;
+    playerOne.healCount++;
+    decidingPrompt();
   }
 }
 
@@ -81,18 +84,28 @@ function startCombat(playerOne, playerTwo) {
 
     while (playerOne.health >= healthDepleted && playerTwo.health >= healthDepleted) {
 
-      if (window.confirm('Would you like to continue Attacking?')) {
-        console.log(playerOne.name + ' decides to attack.');
-      } else {
-        console.log(playerOne.name + ' has ended the game.')
-        return;
-      }
+        decidingPrompt();
+        function decidingPrompt()  {
+          if (decider = prompt('Would you like Attack, Heal, or Quit?') === 'Attack') {
+            console.log(playerOne.name + ' decides to attack.');
+            attack();
+          } else if (decider === 'Heal'){ // Warning this is doing an infinite Loop... D:
+            healUser();
+            console.log(playerOne.name + ' has healed. ' + playerOne.name + ' has ' + playerOne.health + ' health.' );
+          } else {
+            console.log(playerOne.name + ' has Quit the game.');
+            return;
+          }
+        }
 
-      playerTwo.health = playerTwo.health - playerOne.attack;
-      playerOne.health = playerOne.health - playerTwo.attack;
+        function attack() {
 
-      console.log(playerOne.name + ' has ' + playerOne.health + ' health..');
-      console.log(playerTwo.name + ' has ' + playerTwo.health + ' health..');
+          playerTwo.health = playerTwo.health - playerOne.attack;
+          playerOne.health = playerOne.health - playerTwo.attack;
+
+          console.log(playerOne.name + ' has ' + playerOne.health + ' health..');
+          console.log(playerTwo.name + ' has ' + playerTwo.health + ' health..');
+        }
 
       }
 
