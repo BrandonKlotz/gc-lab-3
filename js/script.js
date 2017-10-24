@@ -1,41 +1,21 @@
-// class user = {
-// name: '',
-// health: 40,
-// wins: 0,
-// attack: getDamage(),
-// }
-
-class CompPlayer {
-  constructor(name) {
-    this.name = 'Grant Chirpus';
-    this.health = 10;
-  }
-  attack() {
-    getNum();
-  }
+var user = {
+name: '',
+health: 40,
+wins: 0,
+attack: getNum(),
+heal: 0,
+healCount: ,
 }
 
-class User extends CompPlayer {
-  constructor(name) {
-    super(name);
-    this.name = 'height';
-    this.heath = 40;
-  }
-  heal() {
-    getNum();
-  }
+var compPlayer = {
+name: 'Grant Chirpus',
+health:  10,
+wins: 0,
+attack: getNum(),
 }
-
-// class compPlayer = {
-// name: 'Grant Chirpus',
-// health:  10,
-// wins: 0,
-// attack: getDamage(),
-// }
 
 let pointsNeededToWin = 3;
 let healthDepleted = 0;
-
 
 function startGame(playerOne, playerTwo) {
 
@@ -65,7 +45,7 @@ function startGame(playerOne, playerTwo) {
 
 }
 
-function getNum() {
+function getNum(min, max) {
   var min = 0;
   var max = 5
   min = Math.ceil(min);
@@ -119,3 +99,27 @@ function startCombat(playerOne, playerTwo) {
     endGame(playerOne, playerTwo);
 
 }
+
+// Not using this code. We would use this if we used classes instead of Objects
+
+// class CompPlayer {
+//   constructor(name) {
+//     this.name = 'Grant Chirpus';
+//     this.health = 10;
+//   }
+//   attack() {
+//     getNum(0, 5);
+//   }
+// }
+//
+// class User extends CompPlayer {
+//   constructor(name) {
+//     super(name);
+//     this.name = 'height';
+//     this.heath = 40;
+//     this.wins = 0;
+//   }
+//   heal() {
+//     getNum(0, 3);
+//   }
+// }
