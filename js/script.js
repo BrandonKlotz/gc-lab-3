@@ -1,16 +1,37 @@
-var user = {
-name: '',
-health: 40,
-wins: 0,
-attack: getDamage(),
+// class user = {
+// name: '',
+// health: 40,
+// wins: 0,
+// attack: getDamage(),
+// }
+
+class CompPlayer {
+  constructor(name) {
+    this.name = 'Grant Chirpus';
+    this.health = 10;
+  }
+  attack() {
+    getNum();
+  }
 }
 
-var compPlayer = {
-name: 'Grant Chirpus',
-health:  10,
-wins: 0,
-attack: getDamage(),
+class User extends CompPlayer {
+  constructor(name) {
+    super(name);
+    this.name = 'height';
+    this.heath = 40;
+  }
+  heal() {
+    getNum();
+  }
 }
+
+// class compPlayer = {
+// name: 'Grant Chirpus',
+// health:  10,
+// wins: 0,
+// attack: getDamage(),
+// }
 
 let pointsNeededToWin = 3;
 let healthDepleted = 0;
@@ -44,7 +65,7 @@ function startGame(playerOne, playerTwo) {
 
 }
 
-function getDamage() {
+function getNum() {
   var min = 0;
   var max = 5
   min = Math.ceil(min);
@@ -78,8 +99,8 @@ function startCombat(playerOne, playerTwo) {
         return;
       }
 
-      playerTwo.attack = getDamage();
-      playerOne.attack = getDamage();
+      playerTwo.attack = getNum();
+      playerOne.attack = getNum();
 
       playerTwo.health = playerTwo.health - playerOne.attack;
       playerOne.health = playerOne.health - playerTwo.attack;
