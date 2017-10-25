@@ -64,7 +64,7 @@ function magicPotion(playerOne) {
     var addHealth = getNum(1,10);
     playerOne.health = playerOne.health + addHealth;
     playerOne.healCount++;
-    console.log(playerOne.name + ' has used a magic potion.' + playerOne.name + ' now has ' + playerOne.health + ' health. And' + playerOne.healCount + ' magic potions.');
+    console.log(playerOne.name + ' has used a magic potion. ' + playerOne.name + ' now has ' + playerOne.health + ' health. And has used ' + playerOne.healCount + ' magic potions of 2.');
   }
   return;
 
@@ -84,7 +84,7 @@ function endGame(playerOne, playerTwo) {
   } else {
     console.log(playerTwo.name + ' Lost');
   }
-  console.log('game over');
+  console.log('Game over.');
 
   playerTwo.health = 10;
   playerOne.health = 40;
@@ -103,25 +103,21 @@ function startCombat(playerOne, playerTwo) {
         case 'Attack':
 
           attack(playerOne, playerTwo);
-
           break;
 
         case 'attack':
 
           attack(playerOne, playerTwo);
-
           break;
 
         case 'Heal':
 
           magicPotion(user);
-
           break;
 
         case 'heal':
 
           magicPotion(user);
-
           break;
 
         case 'Quit':
@@ -146,11 +142,11 @@ function startCombat(playerOne, playerTwo) {
         }
       }
 
-      console.log('round over')
+      console.log('Round over.')
       playerOne.wins++;
       playerTwo.health = 10;
 
     }
-    
+
     endGame(playerOne, playerTwo);
 }
