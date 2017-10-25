@@ -19,7 +19,12 @@ let healthDepleted = 0;
 
 var startBtn = document.getElementById("start");
   startBtn.onclick = function() {
+    
+    document.getElementById("header").style.display = 'none';
+    document.getElementById("controls").style.display = 'flex';
+
     startGame(user, compPlayer);
+
   }
 
 
@@ -156,3 +161,7 @@ function startCombat(playerOne, playerTwo) {
 
     endGame(playerOne, playerTwo);
 }
+
+
+
+// Hide the buttons until start
