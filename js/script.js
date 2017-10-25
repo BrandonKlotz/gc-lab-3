@@ -59,7 +59,7 @@ function attack(playerOne, playerTwo) {
 function magicPotion(playerOne) {
 
   if (playerOne.healCount === 2) {
-    console.log('get out.');
+    console.log(playerOne.name + ' has consumed all magic elixars.');
   } else {
     var addHealth = getNum(1,10);
     playerOne.health = playerOne.health + addHealth;
