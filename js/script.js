@@ -134,15 +134,23 @@ function startCombat(playerOne, playerTwo) {
           return;
           break;
 
+        case null:
+          console.log(user.name + ' has quit.');
+          return;
+          break;
+
         default:
-          console.log('Please choose to either Attack, Heal, or Quit.');
+          window.alert('Please choose to either Attack, Heal, or Quit.');
 
           break;
         }
       }
+
       console.log('round over')
       playerOne.wins++;
       playerTwo.health = 10;
+
     }
+    
     endGame(playerOne, playerTwo);
 }
