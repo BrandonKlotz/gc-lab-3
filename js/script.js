@@ -1,5 +1,5 @@
 var user = {
-name: null,
+name: '',
 health: 40,
 wins: 0,
 attack: getNum(1,3),
@@ -16,41 +16,6 @@ attack: getNum(1,5)
 
 let pointsNeededToWin = 3;
 let healthDepleted = 0;
-
-function decidingPrompt(playerOne)  {
-  var decider = prompt('Would you like Attack, Heal, or Quit?')
-  if (decider === 'Attack') {
-    console.log(playerOne.name + ' decides to attack.');
-    attack(playerOne, playerTwo);
-  } else if (decider === 'Heal'){ // Warning this is doing an infinite Loop... D:
-    healUser(playerOne);
-    console.log(playerOne.name + ' has healed. ' + playerOne.name + ' has ' + playerOne.health + ' health.' );
-  } else if(decider === 'Quit') {
-    console.log(playerOne.name + ' has Quit the game.');
-    return;
-  }
-}
-
-function healUser(playerOne) {
-  if (playerOne.healCount = 2) {
-    console.log('get out.');
-    decidingPrompt();
-  } else {
-    var addHealth = getNum(1,10);
-    playerOne.health = playerOne.health + addHealth;
-    playerOne.healCount++;
-    decidingPrompt();
-  }
-}
-
-function attack(playerOne, playerTwo) {
-
-  playerTwo.health = playerTwo.health - playerOne.attack;
-  playerOne.health = playerOne.health - playerTwo.attack;
-
-  console.log(playerOne.name + ' has ' + playerOne.health + ' health..');
-  console.log(playerTwo.name + ' has ' + playerTwo.health + ' health..');
-}
 
 function startGame(playerOne, playerTwo) {
 
@@ -77,6 +42,31 @@ function startGame(playerOne, playerTwo) {
         return;
       }
     }
+
+}
+
+function attack(playerOne, playerTwo) {
+
+  playerTwo.health = playerTwo.health - playerOne.attack;
+  playerOne.health = playerOne.health - playerTwo.attack;
+
+  console.log(playerOne.name + ' has ' + playerOne.health + ' health..');
+  console.log(playerTwo.name + ' has ' + playerTwo.health + ' health..');
+
+  return;
+}
+
+function magicPotion(playerOne) {
+
+  if (playerOne.healCount === 2) {
+    console.log('get out.');
+  } else {
+    var addHealth = getNum(1,10);
+    playerOne.health = playerOne.health + addHealth;
+    playerOne.healCount++;
+    console.log(playerOne.name + ' has used a magic potion.' + playerOne.name + ' now has ' + playerOne.health + ' health. And' + playerOne.healCount + ' magic potions.');
+  }
+  return;
 
 }
 
@@ -107,37 +97,52 @@ function startCombat(playerOne, playerTwo) {
 
     while (playerOne.health >= healthDepleted && playerTwo.health >= healthDepleted) {
 
-        decidingPrompt();
+      let decidingPrompt = prompt('Would you like to Attack, Heal, or Quit?');
 
+      switch (decidingPrompt) {
+        case 'Attack':
+
+          attack(playerOne, playerTwo);
+
+          break;
+
+        case 'attack':
+
+          attack(playerOne, playerTwo);
+
+          break;
+
+        case 'Heal':
+
+          magicPotion(user);
+
+          break;
+
+        case 'heal':
+
+          magicPotion(user);
+
+          break;
+
+        case 'Quit':
+          console.log(user.name + ' has quit.');
+          return;
+          break;
+
+        case 'quit':
+          console.log(user.name + ' has quit.');
+          return;
+          break;
+
+        default:
+          console.log('Please choose to either Attack, Heal, or Quit.');
+
+          break;
+        }
+      }
       console.log('round over')
       playerOne.wins++;
       playerTwo.health = 10;
     }
     endGame(playerOne, playerTwo);
-  }
-
 }
-
-// Not using this code. We would use this if we used classes instead of Objects
-
-// class CompPlayer {
-//   constructor(name) {
-//     this.name = 'Grant Chirpus';
-//     this.health = 10;
-//   }
-//   attack() {
-//     getNum(0, 5);
-//   }
-// }
-//
-// class User extends CompPlayer {
-//   constructor(name) {
-//     super(name);
-//     this.name = 'height';
-//     this.heath = 40;
-//     this.wins = 0;
-//   }
-//   heal() {
-//     getNum(0, 3);
-//   }
-// }
