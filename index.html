@@ -9,50 +9,52 @@
 
   <body>
 
+  <div>
+    <h1>Super Epic Battle Arena</h1>
+  </div>
     <div class="wrapper">
+
+
 
       <div class="screen">
         <p id="user"></p><p id="grant"></p>
 
-        <h3>Player Stats</h3>
-        <table>
-          <tr>
-            <th>Name</th>
-            <th>Health</th>
-            <th>Heal Count</th>
-            <th>Wins</th>
-          </tr>
-        </table>
 
-        <h3>Enemy Stats</h3>
-        <table>
-          <tr>
-            <th>Name</th>
-            <th>Health</th>
-          </tr>
-          <tr>
-            <td>
-            </td>
-            <td>
-            </td>
-          </tr>
-        </table>
+        <div class="stat-screen-container">
+          <div class="player-stats">
+          <h3>Player Stats</h3>
+            <div>
+              <p>Name</p><span id="user-name"></span>
+              <p>Health</p><span id="user-health"></span>
+              <p>Heal Count</p><span id="user-heal-count"></span>
+              <p>Wins</p><span id="user-wins"></span>
+            </div>
+          </div>
+
+          <div class="player-stats">
+          <h3>Enemy Stats</h3>
+            <div>
+              <p>Name</p><span id="computer-name"></span>
+              <p>Health</p><span id="computer-health"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="console-box">
+          <p id="console">Blah</p>
+        </div>
+
       </div>
 
-      <div class="header">
-        <div>
-          <h1>Super Epic Battle Arena</h1>
-        </div>
-        <div>
-        <input class="start" id="startButton" type="button" value="Start" onclick="startGame(user, compPlayer);">
-        </div>
+
+      <div id="header">
+        <input class="start" id="start" type="button" value="Start">
       </div>
 
-      <div class="status">
+      <div id="controls">
         <input class="attack" type="button" value="Attack" onclick="">
         <input class="heal"type="button" value="Heal" onclick="">
         <input class="quit" type="button" value="Quit" onclick="">
-
       </div>
 
     </div>
