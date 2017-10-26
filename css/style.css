@@ -94,7 +94,7 @@ p {
   text-align: center;
 }
 
-input {
+.btns {
   margin: 10px .5em 10px .5em;
   height: 60px;
   width: 120px;
@@ -107,9 +107,21 @@ input {
   box-shadow: 0px 6px 0px 0px #fff;
 }
 
-input:hover {
+.btns:hover {
   margin-top: 15px;
   margin-bottom: 5px;
+}
+
+.inputSpace {
+  display: flex;
+  color: rgba(255,255,255, .5);
+  width: 320px;
+  height: 20px;
+  padding: .5em;
+  margin: 0 auto;
+  border: 4px dashed rgba(255,255,255, .5);
+  border-radius: 10px;
+  background-color: #9DE3DB;
 }
 
 .attack {
