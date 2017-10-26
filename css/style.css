@@ -8,7 +8,7 @@
 html {
   padding: 4em;
   display: flex;
-  background-color: #2F195F;
+  background-color: #CCFFFF;
 }
 
 body {
@@ -17,69 +17,85 @@ body {
 
 .wrapper {
   background-color: #F0F3BD;
-  padding: 4em;
-  height: 600px;
-  width: 600px;
-  border-radius: 10px;
-  box-shadow: 0px 60px 0px 0px #C5C79B;
+  padding-top: 2.5em;
+  padding-left: 2em;
+  padding-right: 2em;
+  padding-bottom: 4em;
+  height: 520px;
+  width: 400px;
+  box-shadow: 0px 40px 0px 0px #C5C79B;
+  border-radius: 20px;
 }
 
 h1 {
   margin-top: 0;
   color: #161712;
+
+}
+
+h3 {
+  margin-top: 0;
 }
 
 p {
-  color: #161712;
+  font-size: .9em;
+  color: #114B5F;
 }
 
-.start div {
-  margin-bottom: 2em;
-  height: 60px;
-}
-
-.header {
+#header {
   margin: 0 auto;
-  padding: 2em;
+  padding: 1em;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: #DBDDAC;
-  border-radius: 10px;
-  height: 150px;
+  border-radius: 20px;
+  width: 150px;
   box-shadow: 0px -4px 0px 0px #C5C79B;
 }
 
-.status {
-  margin-top: 1em;
-  padding: 1.5em;
-  display: flex;
+#controls {
+  padding: 1em;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   background-color: #DBDDAC;
-  border-radius: 10px;
+  border-radius: 20px;
   box-shadow: 0px -4px 0px 0px #C5C79B;
+  display: none;
 }
 
 .screen {
-  margin-bottom: 1em;
-  height: 200px;
-  padding: 1.5em;
+  margin-bottom: 2em;
+  height: 400px;
+  padding-left: .5em;
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
   color: #114B5F;
   background-color: #7DD9CF;
-  border-radius: 10px;
+  border-radius: 20px;
   box-shadow: 0px -12px 0px 0px #9DE3DB;
   text-shadow: 0px 0px 25px #40A79B;
+  padding-bottom: 1em;
+}
+
+.screen p {
+  text-align: left;
+}
+
+.player-stats {
+  margin-left: 1em;
+}
+
+.console-box {
+  margin: 0 auto;
+  text-align: center;
 }
 
 input {
-  margin: 10px 1em 10px 1em;
+  margin: 10px .5em 10px .5em;
   height: 60px;
   width: 120px;
   line-height: 50px;

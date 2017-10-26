@@ -49,3 +49,50 @@
 //
 // function attack(playerOne, playerTwo) {
 // }
+//
+
+
+// Switch
+
+// switch (decidingPrompt) {
+//   case 'Attack':
+//
+//     attack(playerOne, playerTwo);
+//     break;
+//
+//   case 'attack':
+//
+//     attack(playerOne, playerTwo);
+//     break;
+//
+//   case 'Heal':
+//
+//     magicPotion(user);
+//     break;
+//
+//   case 'heal':
+//
+//     magicPotion(user);
+//     break;
+//
+//   case 'Quit':
+//     console.log(user.name + ' has quit.');
+//     return;
+//     break;
+//
+//   case 'quit':
+//     console.log(user.name + ' has quit.');
+//     return;
+//     break;
+//
+//   case null:
+//     console.log(user.name + ' has quit.');
+//     return;
+//     break;
+//
+//   default:
+//     window.alert('Please choose to either Attack, Heal, or Quit.');
+//
+//     break;
+//   }
+// }

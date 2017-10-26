@@ -17,6 +17,17 @@ attack: getNum(1,5)
 let pointsNeededToWin = 3;
 let healthDepleted = 0;
 
+var startBtn = document.getElementById("start");
+  startBtn.onclick = function() {
+    
+    document.getElementById("header").style.display = 'none';
+    document.getElementById("controls").style.display = 'flex';
+
+    startGame(user, compPlayer);
+
+  }
+
+
 function startGame(playerOne, playerTwo) {
 
   var gameStartPrompt = prompt ('Do you dare enter the Dungeon?');
@@ -97,7 +108,7 @@ function startCombat(playerOne, playerTwo) {
 
     while (playerOne.health >= healthDepleted && playerTwo.health >= healthDepleted) {
 
-      let decidingPrompt = prompt('Would you like to Attack, Heal, or Quit?');
+
 
       switch (decidingPrompt) {
         case 'Attack':
@@ -150,3 +161,7 @@ function startCombat(playerOne, playerTwo) {
 
     endGame(playerOne, playerTwo);
 }
+
+
+
+// Hide the buttons until start
