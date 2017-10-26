@@ -1,3 +1,5 @@
+(function(){
+
 var user = {
 name: '',
 health: 40,
@@ -158,6 +160,9 @@ var quitBtn = document.getElementById("quit");
   quitBtn.onclick = function() {
 
 }
+
+
+})();
 
 
 
