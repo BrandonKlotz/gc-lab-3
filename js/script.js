@@ -19,16 +19,25 @@ let healthDepleted = 0;
 
 var startBtn = document.getElementById("start");
   startBtn.onclick = function() {
-    
-    document.getElementById("header").style.display = 'none';
-    document.getElementById("controls").style.display = 'flex';
+
+    // debugger;
 
     startGame(user, compPlayer);
+}
 
-  }
+function removeMyParent(event) {
+  const node = event.currentTarget;
+  const listItem = node.parentNode;
+  const list = listItem.parentNode;
+  list.removeChild(listItem);
+}
 
+const list = document.getElementById('header');
 
 function startGame(playerOne, playerTwo) {
+
+  document.getElementById("header").style.display = 'none';
+  document.getElementById("controls").style.display = 'flex';
 
   var gameStartPrompt = prompt ('Do you dare enter the Dungeon?');
   var consent = 'yes';
@@ -46,7 +55,7 @@ function startGame(playerOne, playerTwo) {
 
         console.log(playerOne.name + ' enters the dungeon...');
 
-        startCombat(playerOne, playerTwo);
+        // startCombat(playerOne, playerTwo);
 
       } else {
         playerOne.name = prompt('You did not enter a name.. Enter your wizarding name!');
@@ -97,69 +106,49 @@ function endGame(playerOne, playerTwo) {
   }
   console.log('Game over.');
 
+  document.getElementById("header").style.display = 'flex';
+  document.getElementById("controls").style.display = 'none';
+
   playerTwo.health = 10;
   playerOne.health = 40;
   playerOne.wins = 0;
 }
+//
+// function startCombat(playerOne, playerTwo) {
+//
+//   while (playerOne.wins < pointsNeededToWin && playerOne.health >=healthDepleted) {// Rounds needed to win
+//
+//
+//     while (playerOne.health >= healthDepleted && playerTwo.health >= healthDepleted) {
+//
+//
+//
+//
+//
+//     }
+//
+//     endGame(playerOne, playerTwo);
+// }
+//
+// }
 
-function startCombat(playerOne, playerTwo) {
+var attackBtn = document.getElementById("attack");
+  attackBtn.onclick = function() {
+    attack(user, compPlayer);
 
-  while (playerOne.wins < pointsNeededToWin && playerOne.health >=healthDepleted) {// Rounds needed to win
+    console.log('Round over.');
+    playerOne.wins++;
+    playerTwo.health = 10;
+}
 
-    while (playerOne.health >= healthDepleted && playerTwo.health >= healthDepleted) {
+var healBtn = document.getElementById("heal");
+  healBtn.onclick = function() {
+    magicPotion(user);
+}
 
-
-
-      switch (decidingPrompt) {
-        case 'Attack':
-
-          attack(playerOne, playerTwo);
-          break;
-
-        case 'attack':
-
-          attack(playerOne, playerTwo);
-          break;
-
-        case 'Heal':
-
-          magicPotion(user);
-          break;
-
-        case 'heal':
-
-          magicPotion(user);
-          break;
-
-        case 'Quit':
-          console.log(user.name + ' has quit.');
-          return;
-          break;
-
-        case 'quit':
-          console.log(user.name + ' has quit.');
-          return;
-          break;
-
-        case null:
-          console.log(user.name + ' has quit.');
-          return;
-          break;
-
-        default:
-          window.alert('Please choose to either Attack, Heal, or Quit.');
-
-          break;
-        }
-      }
-
-      console.log('Round over.')
-      playerOne.wins++;
-      playerTwo.health = 10;
-
-    }
-
-    endGame(playerOne, playerTwo);
+var quitBtn = document.getElementById("quit");
+  quitBtn.onclick = function() {
+      return;
 }
 
 
