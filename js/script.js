@@ -1,4 +1,5 @@
-(function(){
+(function startGame(){
+
 
 var user = {
 name: '',
@@ -21,10 +22,7 @@ let healthDepleted = 0;
 
 var startBtn = document.getElementById("start");
   startBtn.onclick = function() {
-
-    // debugger;
-
-    startGame(user, compPlayer);
+    startPrompt(user, compPlayer);
 }
 
 function removeMyParent(event) {
@@ -36,7 +34,7 @@ function removeMyParent(event) {
 
 const list = document.getElementById('header');
 
-function startGame(playerOne, playerTwo) {
+function startPrompt(playerOne, playerTwo) {
 
   document.getElementById("header").style.display = 'none';
   document.getElementById("controls").style.display = 'flex';
@@ -110,9 +108,6 @@ function endGame(playerOne, playerTwo) {
   }
   console.log('Game over.');
 
-  document.getElementById("header").style.display = 'flex';
-  document.getElementById("controls").style.display = 'none';
-
   playerTwo.health = 10;
   playerOne.health = 40;
   playerOne.wins = 0;
@@ -158,9 +153,17 @@ var healBtn = document.getElementById("heal");
 
 var quitBtn = document.getElementById("quit");
   quitBtn.onclick = function() {
-
+    quitGame();
 }
 
+function quitGame() {
+  console.log('Quitter');
+
+  document.getElementById("header").style.display = 'flex';
+  document.getElementById("controls").style.display = 'none';
+  
+  return;
+}
 
 })();
 
