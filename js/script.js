@@ -1,5 +1,12 @@
 (function startGame(){
 
+function getNum(min, max) {
+  var min;
+  var max;
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random(min, max) * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+}
 
 var user = {
 name: '',
@@ -25,12 +32,21 @@ var startBtn = document.getElementById("start");
     startPrompt(user, compPlayer);
 }
 
-function removeMyParent(event) {
-  const node = event.currentTarget;
-  const listItem = node.parentNode;
-  const list = listItem.parentNode;
-  list.removeChild(listItem);
+var attackBtn = document.getElementById("attack");
+  attackBtn.onclick = function() {
+    attack(user, compPlayer);
 }
+
+var healBtn = document.getElementById("heal");
+  healBtn.onclick = function() {
+    magicPotion(user);
+}
+
+var quitBtn = document.getElementById("quit");
+  quitBtn.onclick = function() {
+    quitGame();
+}
+
 
 const list = document.getElementById('header');
 
@@ -49,7 +65,7 @@ function startPrompt(playerOne, playerTwo) {
       console.log(playFalse);
 
     } else {
-      playerOne.name = prompt('Enter your wizarding name!');
+      playerOne.name = prompt('Enter your wizarding name!'); //Brandon will change to input I may be playing in this area
 
       if (playerOne.name !== null) {
 
@@ -62,6 +78,9 @@ function startPrompt(playerOne, playerTwo) {
         return;
       }
     }
+}
+
+function startCombat() { // Created this for lab specifications
 
 }
 
@@ -89,16 +108,8 @@ function magicPotion(playerOne) {
     console.log(playerOne.name + ' has used a magic potion. ' + playerOne.name + ' now has ' + playerOne.health + ' health. And has used ' + playerOne.healCount + ' magic potions of 2.');
   }
   return;
-
 }
 
-function getNum(min, max) {
-  var min;
-  var max;
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random(min, max) * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
-}
 
 function endGame(playerOne, playerTwo) {
   if (playerOne.health < healthDepleted) {
@@ -112,26 +123,8 @@ function endGame(playerOne, playerTwo) {
   playerOne.health = 40;
   playerOne.wins = 0;
 }
-//
-// function startCombat(playerOne, playerTwo) {
-//
-//   while (playerOne.wins < pointsNeededToWin && playerOne.health >=healthDepleted) {// Rounds needed to win
-//
-//
-//     while  {
-//
-//
-//
-//
-//
-//     }
-//
-//     endGame(playerOne, playerTwo);
-// }
-//
-// }
 
-function round(playerOne, playerTwo) {
+function round(playerOne, playerTwo) { // Not working
   if (playerOne.health <= healthDepleted && playerTwo.health <= healthDepleted) {
     console.log('Round over.');
     playerOne.wins++;
@@ -141,27 +134,12 @@ function round(playerOne, playerTwo) {
   }
 }
 
-var attackBtn = document.getElementById("attack");
-  attackBtn.onclick = function() {
-    attack(user, compPlayer);
-}
-
-var healBtn = document.getElementById("heal");
-  healBtn.onclick = function() {
-    magicPotion(user);
-}
-
-var quitBtn = document.getElementById("quit");
-  quitBtn.onclick = function() {
-    quitGame();
-}
-
-function quitGame() {
+function quitGame() { // Currently working
   console.log('Quitter');
 
   document.getElementById("header").style.display = 'flex';
   document.getElementById("controls").style.display = 'none';
-  
+
   return;
 }
 
@@ -169,4 +147,28 @@ function quitGame() {
 
 
 
-// Hide the buttons until start
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Brandon is creating input Button here
