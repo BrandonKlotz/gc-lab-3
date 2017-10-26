@@ -73,6 +73,8 @@ function attack(playerOne, playerTwo) {
   console.log(playerOne.name + ' has ' + playerOne.health + ' health..');
   console.log(playerTwo.name + ' has ' + playerTwo.health + ' health..');
 
+  round(playerOne, playerTwo);
+
   return;
 }
 
@@ -101,7 +103,7 @@ function getNum(min, max) {
 function endGame(playerOne, playerTwo) {
   if (playerOne.health < healthDepleted) {
     console.log(playerOne.name + ' Lost');
-  } else {
+  } else if (playerTwo.health){
     console.log(playerTwo.name + ' Lost');
   }
   console.log('Game over.');
@@ -119,7 +121,7 @@ function endGame(playerOne, playerTwo) {
 //   while (playerOne.wins < pointsNeededToWin && playerOne.health >=healthDepleted) {// Rounds needed to win
 //
 //
-//     while (playerOne.health >= healthDepleted && playerTwo.health >= healthDepleted) {
+//     while  {
 //
 //
 //
@@ -132,13 +134,19 @@ function endGame(playerOne, playerTwo) {
 //
 // }
 
-var attackBtn = document.getElementById("attack");
-  attackBtn.onclick = function() {
-    attack(user, compPlayer);
-
+function round(playerOne, playerTwo) {
+  if (playerOne.health <= healthDepleted && playerTwo.health <= healthDepleted) {
     console.log('Round over.');
     playerOne.wins++;
     playerTwo.health = 10;
+  } else {
+    return;
+  }
+}
+
+var attackBtn = document.getElementById("attack");
+  attackBtn.onclick = function() {
+    attack(user, compPlayer);
 }
 
 var healBtn = document.getElementById("heal");
@@ -148,7 +156,7 @@ var healBtn = document.getElementById("heal");
 
 var quitBtn = document.getElementById("quit");
   quitBtn.onclick = function() {
-      return;
+
 }
 
 
