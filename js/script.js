@@ -32,7 +32,7 @@ quitBtn.onclick = function() {
     startCombat("quit");
 };
 
-const list = document.getElementById('header'); // What is this used for, Brandon?
+const list = document.getElementById("header"); // What is this used for, Brandon?
 
 // getUserName() requires a name of not null value.  It occurs as a pop-up window prompt, but Brandon would like to build this into the HTML.
 
@@ -50,7 +50,7 @@ function getUserName() {
 
 // getNum() generates a random integer between min and max.
 
-function getNum(min, max) {
+function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -63,27 +63,36 @@ function startGame() {
 // Build user and computer objects.  In a perfect world, we would create these here and then pass them out in an array, but we need to make sure the code works first before we do anything fancy like that.
  
   user = {
-    name: 'Hero', // A string which will include the user's name
+    name: "Hero", // A string which will include the user's name
     health: 40, // Starting health total
     wins: 0, // Total number of wins
-    attack: getNum(1, 3), // Attack power - random number between x and y (inclusive)
-    heal: getNum(1, 10), // Heal power - random number between x and y (inclusive)
-    healCount: 2, // Total number of heals available per game
+    attack: function (min, max) {
+      var userAttack = getRandomInt(min, max);
+      return userAttack;
+    },
+    heal: function (min, max) {
+      var userHeal = getRandomInt(min, max);
+      return userHeal;
+    },
+    healCount: 2 // Total number of heals available per game
   };
 
   compPlayer = {
-    name: 'Grant Chirpus', // Default name of computer character
+    name: "Grant Chirpus", // Default name of computer character
     health:  10, // Starting health total
     wins: 0, // Total number of wins
-    attack: getNum(1, 5), // Attack power - random number between x and y (inclusive)
+    attack: function (min, max) {
+      var compAttack = getRandomInt(min, max);
+      return compAttack;
+    }
   };
 
   printStats(user,compPlayer);
 
 // Make the Start button disappear, to be replaced with the Quit, Attack, and Heal buttons.
 
-  document.getElementById("header").style.display = 'none';
-  document.getElementById("controls").style.display = 'flex';
+  document.getElementById("header").style.display = "none";
+  document.getElementById("controls").style.display = "flex";
 
   user.name = getUserName();
 
@@ -91,17 +100,15 @@ function startGame() {
 
   printConsoleText("Can you defeat " + compPlayer.name + " a total of " + pointsNeededToWin + " times?  Select an action to begin!");
 
-
-
 }
 
 function startCombat(buttonSelection) {
 
   if (buttonSelection == "attack") {
 
-      var userDamage = user.attack;
+      var userDamage = user.attack(1,3);
       compPlayer.health = compPlayer.health - userDamage;
-      var compPlayerDamage = compPlayer.attack;
+      var compPlayerDamage = compPlayer.attack(1,5);
       user.health = user.health - compPlayerDamage;
       printConsoleText(user.name + " deals " + userDamage + " to " + compPlayer.name + ".  " + compPlayer.name + " deals " + compPlayerDamage + " to " + user.name + ".  Now what?");
       printStats(user,compPlayer);
@@ -109,14 +116,14 @@ function startCombat(buttonSelection) {
   } else if (buttonSelection == "quit") {
 
       printConsoleText("Running away, are we, " + user.name + "?  Press Start to try again!");
-      document.getElementById("header").style.display = 'flex';
-      document.getElementById("controls").style.display = 'none';
+      document.getElementById("header").style.display = "flex";
+      document.getElementById("controls").style.display = "none";
       return;
 
   } else if (buttonSelection == "heal") {
 
     if (user.healCount > 0) {
-      var healValue = user.heal;
+      var healValue = user.heal(1,10);
       user.health = user.health + healValue;
       user.healCount = user.healCount - 1;
       printConsoleText("A magic potion has restored " + healValue + " health.  " + user.name + " has " + user.healCount + " potions remaining.");
@@ -147,25 +154,25 @@ function endRound() {
       printStats(user,compPlayer);
     } else if (user.wins === pointsNeededToWin) {
       printConsoleText("Congrats!  " + compPlayer.name + " has been utterly defeated.  We knew you had it in you, " + user.name + "!  Press Start to play again!");
-      document.getElementById("header").style.display = 'flex';
-      document.getElementById("controls").style.display = 'none';
+      document.getElementById("header").style.display = "flex";
+      document.getElementById("controls").style.display = "none";
       return;
     }
   } else if (compPlayer.health > user.health) {
     compPlayer.wins = compPlayer.wins + 1;
     printConsoleText(user.name + " has been reduced to " + user.health + " health and " + compPlayer.name + " emerges victorious!  Better luck next time!");
-    document.getElementById("header").style.display = 'flex';
-    document.getElementById("controls").style.display = 'none';
+    document.getElementById("header").style.display = "flex";
+    document.getElementById("controls").style.display = "none";
     return;
   } else if (compPlayer.health == user.health && user.wins !== pointsNeededToWin) {
     printConsoleText("Both " + user.name + " and " + compPlayer.name + " collapse from their injuries.  But " + user.name + " did not win " + pointsNeededToWin + " times!  Want to try again?");
-    document.getElementById("header").style.display = 'flex';
-    document.getElementById("controls").style.display = 'none';
+    document.getElementById("header").style.display = "flex";
+    document.getElementById("controls").style.display = "none";
     return;
   } else {
     printConsoleText(user.name + " and " + compPlayer.name + " both collapse into the dust.  Looks like this one is a draw!  Want to try again?");
-    document.getElementById("header").style.display = 'flex';
-    document.getElementById("controls").style.display = 'none';
+    document.getElementById("header").style.display = "flex";
+    document.getElementById("controls").style.display = "none"; 
     return;
   }
 
@@ -174,9 +181,6 @@ function endRound() {
 // printStats() is designed to update the curent stats to the web game console interface.
 
 function printStats(playerOne, playerTwo) {
-
-  console.log(playerOne.name);
-  console.log(playerTwo.name);
   
   var userName = document.getElementById("user-name");
   update(userName, playerOne.name);
@@ -206,30 +210,3 @@ function printConsoleText(text) {
 
 })();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Brandon is creating input Button here
