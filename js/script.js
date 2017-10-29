@@ -48,6 +48,21 @@ function getUserName() {
   while (getName === null);
 }
 
+//getUserName2() uses interaction with the HTML DOM to acquire the user's name.  It will auto-return "Hero" if the string is null or empty.
+
+function getUserName2() {
+
+  var inputEl = document.getElementById("input-el");
+  var getName = inputEl.value.trim();
+
+  if (getName !== null && getName !== "") {
+    return getName;
+  } else {
+    return "Hero";
+  }
+ 
+}
+
 // getNum() generates a random integer between min and max.
 
 function getRandomInt(min, max) {
@@ -63,7 +78,7 @@ function startGame() {
 // Build user and computer objects.  In a perfect world, we would create these here and then pass them out in an array, but we need to make sure the code works first before we do anything fancy like that.
  
   user = {
-    name: "Hero", // A string which will include the user's name
+    name: getUserName2(), // A string which will include the user's name
     health: 40, // Starting health total
     wins: 0, // Total number of wins
     attack: function (min, max) {
@@ -89,12 +104,13 @@ function startGame() {
 
   printStats(user,compPlayer);
 
-// Make the Start button disappear, to be replaced with the Quit, Attack, and Heal buttons.
+// Make the Start button and name input disappear, to be replaced with the Quit, Attack, and Heal buttons.
 
   document.getElementById("header").style.display = "none";
   document.getElementById("controls").style.display = "flex";
+  document.getElementById("input-el").style.display = "none";
 
-  user.name = getUserName();
+  // user.name = getUserName();
 
   printStats(user,compPlayer);
 
