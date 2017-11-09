@@ -1,3 +1,13 @@
+(function() {
+
+// getNum() generates a random integer between min and max.
+
+function getNum(min, max) {
+  var min = Math.ceil(min);
+  var max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 // define global game variables and assign values
 
 let pointsNeededToWin = 3;
@@ -159,10 +169,5 @@ function printConsoleText(text) {
   console.innerHTML = text;
 }
 
-// getNum() generates a random integer between min and max.
-
-function getNum(min, max) {
-  var min = Math.ceil(min);
-  var max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+})();
